@@ -1,9 +1,17 @@
-import express from 'express';
+import express from "express"
+import db from "../database"
 var router = express.Router()
 
-/* GET home page. */
-router.post("/events", function(req, res, next) {
-  res.render("index", { title: "Express" })
+// Add VagueData to the data lake.
+router.post("/", function(req, res, next) {
+  db.get("events").push(req.body)
+  res.sendStatus(200)
 })
 
-export default router;
+// Fetch VagueData from the data lake and deliver to directly to the gears which need oiling.
+router.get("/", function(req, res, next) {
+  res.send(db.get("events").value())
+  res.sendStatus(200)
+})
+
+export default router

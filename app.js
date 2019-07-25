@@ -1,10 +1,10 @@
-import createError from 'http-errors';
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import indexRouter from './routes/index';
-import eventsRouter from './routes/events';
+import createError from "http-errors"
+import express from "express"
+import path from "path"
+import cookieParser from "cookie-parser"
+import logger from "morgan"
+import indexRouter from "./routes/index"
+import eventsRouter from "./routes/events"
 
 var app = express()
 
@@ -19,7 +19,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/", indexRouter)
-app.use("/users", usersRouter)
+app.use("/events", eventsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,4 +37,4 @@ app.use(function(err, req, res, next) {
   res.render("error")
 })
 
-export default app;
+export default app
