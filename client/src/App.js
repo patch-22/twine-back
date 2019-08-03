@@ -14,12 +14,13 @@ export default class App extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get("/events").then(data => {
-      this.setState({ data })
+    axios.get("/events/summary").then(data => {
+      this.setState({ data: data.data })
     })
   }
   render() {
-    if (!this.state.data) {
+    let { data } = this.state
+    if (!data) {
       return (
         <div className="loading">
           <GridLoader />
@@ -30,9 +31,10 @@ export default class App extends React.Component {
       <div className="container">
         <header className="col-md-8 offset-md-2">
           <h2>Dogpatch Labs</h2>
-          <h1>431 guests</h1>
-          <Insight text="A lot more people than the usual of 357 guests." />
-          <Insight text="You're approaching your building's capacity limit of 500 guests." />
+          <h1>{data.current} guests</h1>
+          {data.insights.map(insight => (
+            <Insight text={insight} />
+          ))}
           <Chart />
         </header>
       </div>
