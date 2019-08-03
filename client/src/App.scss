@@ -1,0 +1,29 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap");
+@import url("https://cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css");
+
+$gray10: #677e8c;
+* {
+  font-family: "Rubik";
+}
+h2 {
+  color: $gray10;
+  font-size: 1.3em;
+}
+h1 {
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+.insight {
+  color: $gray10;
+  margin: 0.5em 0 0.5em 0;
+}
+.container {
+  margin-top: 5rem;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
