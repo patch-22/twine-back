@@ -3,6 +3,9 @@
 @import url("https://cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css");
 
 $gray10: #677e8c;
+$grayAMillion: #7f7fd4;
+$grayALittle: lighten($gray10, 50);
+
 * {
   font-family: "Rubik";
 }
@@ -19,11 +22,64 @@ h1 {
   margin: 0.5em 0 0.5em 0;
 }
 .container {
-  margin-top: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
 }
 .loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.svg-map__location {
+  fill: $grayALittle;
+  stroke: $gray10;
+  &:hover {
+    fill: $gray10;
+  }
+  &[aria-checked="true"] {
+    fill: $grayAMillion;
+  }
+}
+.map__tooltip {
+  position: fixed;
+  padding: 10px;
+  margin-left: 100px;
+  border: 1px solid darkgray;
+  background-color: $grayAMillion;
+  color: white;
+  border-radius: 100px;
+}
+.pulsing {
+  animation: 2500ms ease-in-out 0ms infinite normal none running pulse;
+  bottom: 0;
+  background-image: -webkit-linear-gradient(darken(#0074d9, 10%) 30%, lighten(darken(#0074d9, 10), 20%) 70%);
+  background-size: 100% 300%;
+  border-radius: 3px 3px 0 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  &-light {
+    background-image: -webkit-linear-gradient(lighten(#0074d9, 100%) 30%, lighten(#0074d9, 40%) 70%);
+  }
+}
+@keyframes pulse {
+  0% {
+    background-position: 0 0;
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  55%,
+  70% {
+    background-position: 0 100%;
+    opacity: 1;
+  }
+  90% {
+    background-position: 0 100%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }

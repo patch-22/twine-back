@@ -18,21 +18,4 @@ router.get("/", function(req, res, next) {
   res.send(db.get("events").value())
 })
 
-// Send summary data for the UI
-router.get("/summary", function(req, res, next) {
-  let total = 0
-  db.get("events")
-    .value()
-    .forEach(event => {
-      total += event.count == 1 ? 1 : -1
-    })
-  res.send({
-    current: total,
-    insights: [
-      "You're busier than usual.",
-      "You're approaching your building's capacity.",
-    ],
-  })
-})
-
 export default router
